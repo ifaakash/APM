@@ -35,6 +35,16 @@ services:
     networks:
       - APM
 
+  # datadog:
+  #   image: datadog/agent:latest@sha256:f4925b15ce946e2a9c61159cfad531de8d5091257c732a6b69f2b3c716d83e0d
+  #   container_name: Datadog
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock:ro
+  #     - /proc/:/host/proc/:ro \
+  #     - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro \
+  #   networks:
+  #     - APM
+
 volumes:
   grafana-data:
   loki-data:
