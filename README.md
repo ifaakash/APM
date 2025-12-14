@@ -1,3 +1,6 @@
+https://img.shields.io/github/last-commit/ifaakash/APM/main
+https://img.shields.io/badge/Maintained-Yes-Green
+
 # Local Setup Guide
 
 To set up the monitoring stack locally, follow these steps:
