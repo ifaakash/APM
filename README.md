@@ -1,5 +1,5 @@
-https://img.shields.io/github/last-commit/ifaakash/APM/main  
-https://img.shields.io/badge/Maintained-Yes-Green
+![Last commit](https://img.shields.io/github/last-commit/ifaakash/APM/main)  
+![Is Maintained?](https://img.shields.io/badge/Maintained-Yes-Green)
 
 # Local Setup Guide
 
