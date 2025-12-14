@@ -1,0 +1,44 @@
+services:
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+    networks:
+      - APM
+  promtail:
+    image: grafana/promtail:main-0edc65d
+    container_name: promtail
+    volumes:
+      - ./promtail-config.yml:/etc/promtail/config.yml
+      - /var/log:/var/log:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+    command: -config.file=/etc/promtail/config.yml
+    networks:
+      - APM
+    depends_on:
+      - loki
+
+  # Give custom configuration file reference to loki as read-only
+  loki:
+    image: grafana/loki:latest
+    container_name: loki
+    ports:
+      - 3100:3100
+    volumes:
+      - ./loki-config.yml:/etc/loki/custom-config.yml
+      - loki-data:/loki
+    command: -config.file=/etc/loki/custom-config.yml
+    networks:
+      - APM
+
+volumes:
+  grafana-data:
+  loki-data:
+
+networks:
+  APM:
+    driver: bridge
